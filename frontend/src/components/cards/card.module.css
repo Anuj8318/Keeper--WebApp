@@ -1,0 +1,137 @@
+/* Centering the container */
+.contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    padding: 40px 0;
+}
+
+/* 4-column grid for better spacing */
+.holder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Card Styling */
+.container {
+    width: 300px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    font-family: "Arial", sans-serif;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s;
+    overflow: hidden;
+    justify-content: space-between; /* Push content to top and bottom */
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Title and Description */
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #555;
+    padding: 5px;
+    flex-grow: 1; /* Pushes buttons to the bottom */
+}
+
+/* Button and Image Row */
+/* Button and Image Row */
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    box-sizing: border-box;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Show buttons when hovering over the card */
+.container:hover .buttonContainer {
+    opacity: 1; /* Make buttons visible */
+}
+
+
+/* Upload Image */
+input[type="file"] {
+    display: none;
+}
+
+.photoIcon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+/* Buttons */
+.delete,
+.edit {
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    padding: 8px 12px;
+    transition: 0.3s;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    margin-left: 5px;
+}
+
+
+.delete {
+    background-color:#C70D3A;
+    color: white;
+}
+
+.delete:hover {
+    background-color:#d2224e;
+}
+
+.edit {
+    background-color:#8B9A46;
+    color: white;
+}
+
+.edit:hover {
+    background-color:#a7b85e;
+}
+
+
+/* Show buttons when hovering over the card */
+.container:hover .buttonContainer {
+    opacity: 1;
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Adds hover effect for the card */
+}

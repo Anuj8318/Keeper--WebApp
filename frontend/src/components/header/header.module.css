@@ -1,0 +1,94 @@
+@import "../../vars.css";
+
+
+.header {
+    background-color: rgb(230, 174, 32);
+    width: 100vw;
+    height: auto;
+}
+
+.content{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 20px;
+}
+.name{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.lhead {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rhead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav{
+    display: flex;
+    gap: 10px;
+    
+}
+.button{
+   background-color: rgb(230, 174, 32); ;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;    
+}
+
+ /* Search Box */
+ .searchBox {
+    position: relative;
+}
+/* input[type="text"] {
+    width: 250px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 4px 10px #000000;
+    text-align: center;
+    outline: none;
+} */
+
+/* input{
+    height: 48px;
+
+    width: 500px;
+} */
+.searchBox input {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    width: 500px;
+    height: 50px;
+}
+
+.searchBox button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 25px;
+}
+
+.searchBox button:hover {
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .searchBox input {
+        width: 150px;
+    }
+}
