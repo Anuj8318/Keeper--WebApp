@@ -7,28 +7,34 @@ const Card = ({ id, name, content, onDelete, onEdit }) => {
   const [updatedTitle, setUpdatedTitle] = useState(name);
   const [updatedContent, setUpdatedContent] = useState(content);
 
-  // Handle Save after editing
   const handleSave = () => {
     onEdit(id, updatedTitle, updatedContent);
     setIsEditing(false);
   };
-   // Handle Delete
+
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token"); // Get token from localStorage
+
       const response = await fetch(`http://localhost:3000/api/notes/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (!response.ok) {
-        console.error("Failed to delete note");
+        const errorData = await response.json();
+        console.error("Failed to delete note:", errorData.message || response.statusText);
         return;
       }
 
-      onDelete(id); // Remove from UI after successful deletion
+      onDelete(id); // Remove from UI
     } catch (error) {
       console.error("Error deleting note:", error);
     }
   };
+
   return (
     <div className={card.container}>
       {isEditing ? (
@@ -51,7 +57,6 @@ const Card = ({ id, name, content, onDelete, onEdit }) => {
           <div className={card.title}>{name}</div>
           <div className={card.description}>{content}</div>
 
-          {/* Bottom row with image upload and buttons */}
           <div className={card.buttonContainer}>
             <label htmlFor={`upload-${id}`}>
               <img className={card.photoIcon} src={imag} alt="Upload" />

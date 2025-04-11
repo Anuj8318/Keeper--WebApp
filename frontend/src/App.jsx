@@ -1,27 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
-import "./App.css";
 import Footer from "./components/footer/Footer";
 import Notes from "./components/notes/Notes";
-// import Card from "./components/cards/Card";
-// import info from "./components/cards/Info";
-import style from "./components/cards/card.module.css";
 import Notelist from "./components/Notelist";
-
-
+import "./App.css";
+import style from "./components/cards/card.module.css";
 
 const App = () => {
+
   return (
+
     <div className={style.mainy}>
-      <Header></Header>
-      <Notes></Notes>
-      <Notelist></Notelist>
-      {/* cardbody */}
-      <Footer></Footer>
-    </div>
+    <Notes></Notes>
+    <Notelist></Notelist>
+    {/* cardbody */}
+  </div>
   );
 };
 
 export default App;
-
-// cardBody

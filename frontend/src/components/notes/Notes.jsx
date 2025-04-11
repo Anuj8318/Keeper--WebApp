@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./notes.css";
 
+
 const KeepInputBox = ({ onNoteAdded }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [title,setTitle] = useState("");
   const [info, setInfo] = useState("");
   const [color,setColor] = useState("default");
   // const [note, setNote] = useState({ title: "", info: "", color: "default" });
-
+ 
     const handleChange1 = (e) => {
       setTitle(e.target.value);
       console.log(title);
@@ -23,33 +24,37 @@ const KeepInputBox = ({ onNoteAdded }) => {
     }
   
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!title && !info) return;
-
-    try {
-      const payload = {title,info,color};
-      console.log(payload);
-      
-      console.log("Note Saved:", info);
-      const response = await axios.post(
-        "http://localhost:3000/api/notes",
-        payload
-      );
-      console.log("Note Saved:", response.data);
-      console.log("Note Saved:", title);
-      setTitle("");
-      setInfo("");
-      setColor("");
-      
-      // setNote({ title: "", info: "", color: "default" });
-      console.log("Note Saved:", title);
-      setIsExpanded(false);
-      if (onNoteAdded) onNoteAdded(response.data);
-    } catch (error) {
-      console.error("Error saving note:", error);
-    }
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!title && !info) return;
+    
+      try {
+        const token = localStorage.getItem("token"); // make sure this matches where you store the token after login
+    
+        const payload = { title, info, color };
+        console.log("Sending Payload:", payload);
+    
+        const response = await axios.post(
+          "http://localhost:3000/api/notes",
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // ⬅️ This is the key fix
+            },
+          }
+        );
+    
+        console.log("Note Saved:", response.data);
+        setTitle("");
+        setInfo("");
+        setColor("default"); // resetting to default
+        setIsExpanded(false);
+        if (onNoteAdded) onNoteAdded(response.data);
+      } catch (error) {
+        console.error("Error saving note:", error);
+      }
+    };
+    
 
   return (
     <form

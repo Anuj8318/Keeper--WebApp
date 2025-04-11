@@ -7,11 +7,21 @@ function Notelist() {
 
   useEffect(() => {
     fetchNotes();
-  }, []);
+  }, [notes,setNotes]);
 
   const fetchNotes = async () => {
+    const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost:3000/api/notes");
+      const response = await fetch("http://localhost:3000/api/notes", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Unauthorized or failed to fetch notes");
+      }
+
       const data = await response.json();
       setNotes(data);
     } catch (error) {
@@ -19,11 +29,14 @@ function Notelist() {
     }
   };
 
-  // Delete Note Function
   const deleteNote = async (id) => {
+    const token = localStorage.getItem("token");
     try {
       await fetch(`http://localhost:3000/api/notes?id=${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setNotes(notes.filter((note) => note.id !== id));
     } catch (error) {
@@ -31,12 +44,15 @@ function Notelist() {
     }
   };
 
-  // Edit Note Function
   const editNote = async (id, newTitle, newInfo) => {
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(`http://localhost:3000/api/notes/${id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ title: newTitle, info: newInfo }),
       });
 
@@ -48,26 +64,26 @@ function Notelist() {
   };
 
   return (
-    <>
-      <div className={style.contain}>
-        <div className={style.holder}>
-          {notes.length > 0 ? (
-            notes.map((note) => (
-              <Card
-                key={note.id}
-                id={note.id}
-                name={note.title}
-                content={note.info}
-                onDelete={deleteNote}
-                onEdit={editNote}
-              />
-            ))
-          ) : (
-            <p style={{textAlign:"center",fontSize:"2rem", fontFamily:"cursive"}}>No notes available</p>
-          )}
-        </div>
+    <div className={style.contain}>
+      <div className={style.holder}>
+        {notes.length > 0 ? (
+          notes.map((note) => (
+            <Card
+              key={note.id}
+              id={note.id}
+              name={note.title}
+              content={note.info}
+              onDelete={deleteNote}
+              onEdit={editNote}
+            />
+          ))
+        ) : (
+          <p style={{ textAlign: "center", fontSize: "2rem", fontFamily: "cursive" }}>
+            No notes available
+          </p>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
