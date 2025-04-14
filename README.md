@@ -19,7 +19,7 @@ A minimal, full-stack note-taking web application inspired by Google Keep. Users
 
 | 🏠 Notes Dashboard | 🔐 Login & Sign Up |
 |--------------------|--------------------|
-| ![notes](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTgzNTFiOTM1N2Q3ZDZiNDQ2ZWI2ZjgyOWVjZjk4ZDY0ZmI2ZDg0NSZjdD1n/ftnIXIYyzMZ4nCZAgR/giphy.gif) |![auth](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExem8zcWV4dzVtYW4wMzU1eHZ5bmdjeXVzMXpkdGpiOGFnNzZwMWx2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jGREgVnPehk53NhiGx/giphy.gif)
+| ![notes](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGo5anc5ajdpdnI1YTR4bHB0OXplZ2J4a2I0ZDM1d3E5bThhdG9peCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/51oC3frne3lmJMSODx/giphy.gif) |![auth](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExem8zcWV4dzVtYW4wMzU1eHZ5bmdjeXVzMXpkdGpiOGFnNzZwMWx2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jGREgVnPehk53NhiGx/giphy.gif)
 
 ---
 
