@@ -1,6 +1,11 @@
 import head from "./header.module.css";
 
 const Header = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+  
   return (
     <div className={head.header}>
       <div className={head.content}>
@@ -17,7 +22,7 @@ const Header = () => {
             <input type="text" placeholder="search..." />
             <button>&#128269;</button>
           </div>
-          <div>details</div>
+          <button onClick={handleLogout}>LogOut</button>
         </div>
       </div>
     </div>
